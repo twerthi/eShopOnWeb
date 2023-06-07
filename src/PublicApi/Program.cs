@@ -24,7 +24,11 @@ namespace Microsoft.eShopWeb.PublicApi
                 try
                 {
                     var catalogContext = services.GetRequiredService<CatalogContext>();
+                    catalogContext.Database.EnsureCreated();
                     await CatalogContextSeed.SeedAsync(catalogContext, loggerFactory);
+
+                    var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                    identityContext.Database.EnsureCreated();
 
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
