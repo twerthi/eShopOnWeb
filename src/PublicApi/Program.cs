@@ -23,6 +23,7 @@ namespace Microsoft.eShopWeb.PublicApi
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
+                    /*
                     var catalogContext = services.GetRequiredService<CatalogContext>();
                     catalogContext.Database.EnsureCreated();
                     await CatalogContextSeed.SeedAsync(catalogContext, loggerFactory);
@@ -33,6 +34,7 @@ namespace Microsoft.eShopWeb.PublicApi
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     await AppIdentityDbContextSeed.SeedAsync(userManager, roleManager);
+                    */
                 }
                 catch (Exception ex)
                 {
