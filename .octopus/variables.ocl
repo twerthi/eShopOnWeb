@@ -1,0 +1,54 @@
+variable "baseUrls:apiBase" {
+    value "https://#{Project.Web.PublicApi.Hostname}" {}
+}
+
+variable "baseUrls:webBase" {
+    value "https://#{Project.Web.Catalog.Hostname}" {}
+}
+
+variable "ConnectionStrings:CatalogConnection" {
+    value "Data Source=#{Database.Server.Name};Initial Catalog=#{Project.Database.Catalog.Name};User ID=#{Database.Server.SA.Username};Password=#{Database.Server.SA.Password};MultipleActiveResultSets=true;trustServerCertificate=true;" {}
+}
+
+variable "ConnectionStrings:IdentityConnection" {
+    value "Data Source=#{Database.Server.Name};Initial Catalog=#{Project.Database.Identity.Name};User ID=#{Database.Server.SA.Username};Password=#{Database.Server.SA.Password};MultipleActiveResultSets=true;trustServerCertificate=true;" {}
+}
+
+variable "Project.Database.Catalog.Name" {
+    value "eshop-catalog" {}
+}
+
+variable "Project.Database.Identity.Name" {
+    value "eshop-identity" {}
+}
+
+variable "Project.Web.Catalog.Hostname" {
+    value "eshop-#{Octopus.Environment.Name}.octopusdemos.com" {}
+
+    value "eshop.octopusdemos.com" {
+        description = ""
+        environment = ["production"]
+    }
+}
+
+variable "Project.Web.Catalog.Site.Name" {
+    value "eShop-Catalog" {}
+}
+
+variable "Project.Web.Certificate" {
+    type = "Certificate"
+
+    value "certificates-demo-ssl-certificate-spaces-1" {}
+}
+
+variable "Project.Web.PublicApi.Hostname" {
+    value "eshop-api-#{Octopus.Environment.Name}.octopusdemos.com" {}
+
+    value "eshop-api.octopusdemos.com" {
+        description = ""
+    }
+}
+
+variable "Project.Web.PublicApi.Site.Name" {
+    value "eShop-Api" {}
+}
