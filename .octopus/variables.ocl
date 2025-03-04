@@ -31,10 +31,6 @@ variable "Project.Web.Catalog.Hostname" {
     }
 }
 
-variable "Project.Web.Catalog.Site.Name" {
-    value "eShop-Catalog" {}
-}
-
 variable "Project.Web.Certificate" {
     type = "Certificate"
 
@@ -49,6 +45,10 @@ variable "Project.Web.PublicApi.Hostname" {
     }
 }
 
+variable "Project.Web.Catalog.Site.Name" {
+    value "eShop-Catalog-#{Octopus.Environment.Name}" {}
+}
+
 variable "Project.Web.PublicApi.Site.Name" {
-    value "eShop-Api" {}
+    value "eShop-Api-#{Octopus.Environment.Name}" {}
 }
