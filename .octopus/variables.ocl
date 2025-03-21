@@ -14,14 +14,6 @@ variable "ConnectionStrings:IdentityConnection" {
     value "Data Source=#{Database.Server.Name};Initial Catalog=#{Project.Database.Identity.Name};User ID=#{Database.Server.SA.Username};Password=#{Database.Server.SA.Password};MultipleActiveResultSets=true;trustServerCertificate=true;" {}
 }
 
-variable "Project.Database.Catalog.Name" {
-    value "eshop-catalog" {}
-}
-
-variable "Project.Database.Identity.Name" {
-    value "eshop-identity" {}
-}
-
 variable "Project.Web.Catalog.Hostname" {
     value "eshop-#{Octopus.Environment.Name}.octopusdemos.com" {}
 
@@ -51,4 +43,12 @@ variable "Project.Web.Catalog.Site.Name" {
 
 variable "Project.Web.PublicApi.Site.Name" {
     value "eShop-Api-#{Octopus.Environment.Name}" {}
+}
+
+variable "Project.Database.Catalog.Name" {
+    value "eshop-catalog-#{Octopus.Environment.Name}" {}
+}
+
+variable "Project.Database.Identity.Name" {
+    value "eshop-identity-#{Octopus.Environment.Name}" {}
 }
